@@ -109,46 +109,6 @@ class SiteController extends Controller
     public function actionModulDua()
     {
         $model = new UploadForm();
-
-        if (Yii::$app->request->isPost) {
-            $model->file = UploadedFile::getInstance($model, 'file');
-
-            if ($model->file && $model->validate()) {         
-                $namaFile = $model->file->baseName . '.' . $model->file->extension;
-                $model->file->saveAs('dummy/' . $namaFile);
-                $BASE_PATH = \Yii::$app->basePath."/web/dummy/";
-                $converter = new OfficeConverter($BASE_PATH.$namaFile);
-            
-            
-                    $converter->convertTo($BASE_PATH."output.pdf"); //generates pdf file in same directory as test-file.docx
-                    // $content = file_get_contents(dirname($filename)."\\".$nameFile);
-                    // return $content;
-            
-
-                echo "<pre>";   
-                var_dump($converter);
-                exit();
-
-                // $pdfFile = $BASE_PATH."output.pdf";
-                // //get total number of pages in pdf file
-                // $pdf = new \Spatie\PdfToImage\Pdf($pdfFile);
-                // $pdf->setCompressionQuality(80);
-                // $pages = $pdf->getNumberOfPages();
-
-                // for($i=1;$i<=$pages;$i++){
-                //     $pdf->setPage($i)->saveImage($BASE_PATH."/image$i.jpg");
-                // }
-                // echo \Yii::$app->basePath."\web\dummy";
-                exit();
-            }
-
-
-
-            
-        }
-
-        return $this->render('moduldua', ['model' => $model]);
-
     }
 
 

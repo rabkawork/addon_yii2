@@ -7,7 +7,18 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'aliases' => [
+    'modules' => [
+        'ModulSatu' => [
+            'class' => 'app\modules\ModulSatu\Settings',
+        ],
+        'ModulDua' => [
+            'class' => 'app\modules\ModulDua\Settings',
+        ],
+        'ModulTiga' => [
+            'class' => 'app\modules\ModulTiga\Settings',
+        ],
+    ],
+	'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],

@@ -1,5 +1,5 @@
 <?php
-namespace app\models;
+namespace app\modules\ModulSatu\models;
 
 use yii\base\Model;
 use yii\web\UploadedFile;

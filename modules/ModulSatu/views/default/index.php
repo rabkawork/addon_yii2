@@ -50,7 +50,7 @@ $this->title = 'Addon Yii2';
                 <div class="swiper-wrapper">
                     <?php foreach($model['images'] as $val): ?>
                         <div class="swiper-slide"> 
-                            <a href="<?php echo  Url::to(['site/detail', 'id' => $model['id']]); ?>">
+                            <a href="<?php echo  Url::to(['/ModulSatu/default/detail', 'id' => $model['id']]); ?>">
                                 <img class="card-img-top rounded" src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name']; ?>">
                             </a>
                         </div>
@@ -62,8 +62,8 @@ $this->title = 'Addon Yii2';
 
             <div class="card-body">
                 <h2 class="card-text">  <?php echo $model['title']; ?></h2>
-                <div class="d-flex justify-content-between align-items-center">
-                <?php echo $model['description']; ?>
+                <div class="d-flex justify-content-between align-items-center" style="text-color:grey;">
+                <?php echo substr($model['description'],0,100); ?>  ....
                 </div>
             </div>
         </div>     

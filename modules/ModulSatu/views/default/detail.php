@@ -165,7 +165,7 @@ $this->title = 'Addon Yii2';
                 <div class="swiper-wrapper">
                     <?php foreach($model['images'] as $val): ?>
                         <div class="swiper-slide"> 
-                            <a href="<?php echo  Url::to(['site/detail', 'id' => $model['id']]); ?>">
+                            <a href="<?php echo  Url::to(['/ModulSatu/default/detail', 'id' => $model['id']]); ?>">
                                 <img class="card-img-top rounded" src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name']; ?>">
                             </a>
                         </div>

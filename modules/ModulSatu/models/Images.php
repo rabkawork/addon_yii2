@@ -1,24 +1,24 @@
 <?php
 
-namespace app\models;
+namespace app\modules\ModulSatu\models;
 
 use Yii;
 
 /**
- * This is the model class for table "tags_relation".
+ * This is the model class for table "images".
  *
  * @property int $id
+ * @property string $name
  * @property int $content_id
- * @property int $tag_id
  */
-class TagsRelation extends \yii\db\ActiveRecord
+class Images extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'tags_relation';
+        return 'images';
     }
 
     /**
@@ -27,8 +27,9 @@ class TagsRelation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['content_id', 'tag_id'], 'required'],
-            [['content_id', 'tag_id'], 'integer'],
+            [['name', 'content_id'], 'required'],
+            [['content_id'], 'integer'],
+            [['name'], 'string', 'max' => 255],
         ];
     }
 
@@ -39,8 +40,8 @@ class TagsRelation extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'name' => 'Name',
             'content_id' => 'Content ID',
-            'tag_id' => 'Tag ID',
         ];
     }
 }

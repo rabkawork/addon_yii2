@@ -1,24 +1,23 @@
 <?php
 
-namespace app\models;
+namespace app\modules\ModulSatu\models;
 
 use Yii;
 
 /**
- * This is the model class for table "menu".
+ * This is the model class for table "tags".
  *
  * @property int $id
  * @property string $title
- * @property int|null $parent
  */
-class Menu extends \yii\db\ActiveRecord
+class Tags extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'menu';
+        return 'tags';
     }
 
     /**
@@ -28,7 +27,6 @@ class Menu extends \yii\db\ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['parent'], 'integer'],
             [['title'], 'string', 'max' => 255],
         ];
     }
@@ -41,7 +39,6 @@ class Menu extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Title',
-            'parent' => 'Parent',
         ];
     }
 }

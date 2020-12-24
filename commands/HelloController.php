@@ -9,9 +9,9 @@ namespace app\commands;
 
 use yii\console\Controller;
 use yii\console\ExitCode;
-use app\models\Menu;
-use app\models\Content;
-use app\models\Images;
+use app\modules\Presentasi\models\Menu;
+use app\modules\Presentasi\models\Content;
+use app\modules\Presentasi\models\Images;
 
 
 class HelloController extends Controller
@@ -49,6 +49,11 @@ class HelloController extends Controller
                 $content->description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ";
                 $content->menu_id = $id;
                 $content->default_images = $getIndex == 0 ? '1.jpg' : '4.jpg';
+                $randGratisAtauBayar = rand(0,1);
+                $content->status = $randGratisAtauBayar;
+                $content->harga = $randGratisAtauBayar == 0 ? 0 : 10000;
+                $content->file_ppt = 'contoh.pptx';
+                $content->is_published = 1;
                 $content->save();
                 $contentId = $content->id;
 

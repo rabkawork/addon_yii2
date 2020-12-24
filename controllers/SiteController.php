@@ -14,12 +14,12 @@ use yii\data\Pagination;
 use yii\base\Widget;
 use yii\web\UploadedFile;
 
-use app\models\UploadForm;
-use app\models\Menu;
-use app\models\Content;
-use app\models\Images;
+// use app\models\UploadForm;
+// use app\models\Menu;
+// use app\models\Content;
+// use app\models\Images;
 use NcJoes\OfficeConverter\OfficeConverter;
-
+use Spatie\PdfToText\Pdf;
 
 
 class SiteController extends Controller
@@ -66,9 +66,7 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionUpload(){
 
-    }
 
 
     /**
@@ -79,12 +77,16 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            // return $this->goHome();
+            return $this->redirect(['/Presentasi/default/index','id' => 1]);     
+            
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            // return $this->goBack();
+            return $this->redirect(['/Presentasi/default/index','id' => 1]);     
+
         }
 
         $model->password = '';

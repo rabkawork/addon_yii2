@@ -11,7 +11,7 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
 
-use app\modules\ModulSatu\models\Menu;
+use app\modules\Presentasi\models\Menu;
 
 $menuData = Menu::find()
 ->indexBy('id')
@@ -48,7 +48,7 @@ AppAsset::register($this);
 
         <?php foreach($menuData as $key => $data): ?>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="<?php echo  Url::to(['/ModulSatu/default/index', 'id' => $data['id']]); ?>" class="nav-link"><?php echo $data['title']; ?></a>
+          <a href="<?php echo  Url::to(['/Presentasi/default/index', 'id' => $data['id'],'page' => 1]); ?>" class="nav-link"><?php echo $data['title']; ?></a>
         </li>
         <?php endforeach; ?>
         
@@ -84,7 +84,7 @@ AppAsset::register($this);
                with font-awesome or any other icon font library -->
                
           <li class="nav-item">
-            <a href="<?php echo  Url::to(['/ModulSatu/default/index', 'id' => 1]); ?>" class="nav-link">
+            <a href="<?php echo  Url::to(['/Presentasi/default/index', 'id' => 1,'page' => 1]); ?>" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Modul 1
@@ -92,21 +92,19 @@ AppAsset::register($this);
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo  Url::to(['/ModulDua/default/index']); ?>" class="nav-link">
+            <a href="<?php echo  Url::to(['/Presentasi/upload/upload']); ?>" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Modul 2
-                <span class="right badge badge-danger">On Progress</span>
               </p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="<?php echo  Url::to(['/ModulTiga/default/index']); ?>" class="nav-link">
+            <a href="<?php echo  Url::to(['/Presentasi/beli/index','id' => '1']); ?>" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Modul 3
-                <span class="right badge badge-danger">On Progress</span>
               </p>
             </a>
           </li>

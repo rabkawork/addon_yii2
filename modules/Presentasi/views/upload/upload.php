@@ -1,5 +1,9 @@
 <?php
+use kartik\file\FileInput;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use kartik\file\FileInput;
+
 ?>
     <section class="content">
           <div class="container-fluid">
@@ -9,15 +13,28 @@ use yii\widgets\ActiveForm;
                 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
 
+
+                <?php
+
+            echo $form->field($model, 'file')->widget(FileInput::classname(), [
+                'options' => ['accept' => 'image/*'],
+            ]); 
+                            
+
+            ?>
+
                 <?php
                 echo $form->field($model, 'menu_id')->dropDownList(
                 $dropdownList
                 ); ?>
+                    echo $form->field($model, 'menu_id')->dropDownList(
+                    $dropdownList
+                    ); 
+                ?>
 
 
-                <?= $form->field($model, 'file')->fileInput() ?>
 
-                <button class="btn btn-success">Upload</button>
+                <button class="btn btn-success">Uploads</button>
                 </div>
                 </div>
           </div>

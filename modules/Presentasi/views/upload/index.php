@@ -187,9 +187,28 @@ $this->title = 'Addon Yii2';
               <span class="flex-1 text-center pl-2">Publish</span>
             </a>
 
-            <a href="#"  class="rounded btn btn-warning btn-lg active" >
-              <span class="flex-1 text-center pl-2">Play audio</span>
-            </a>
+
+
+            <audio controls id="music">
+            <source src="<?= Yii::$app->request->baseUrl .'/dummy/'.$data['file_audio']; ?>" type="audio/mpeg">
+            Your browser does not support the audio element.
+            </audio>
+
+            <p>Click the buttons to play or pause the music.</p>
+
+            <button onclick="play()" type="button">Play </button>
+            <button onclick="pause()" type="button">Pause</button>
+
+            <script>
+            var myMusic= document.getElementById("music");
+            function play() {
+            myMusic.play();
+            }
+
+            function pause() {
+            myMusic.pause();
+            }
+            </script>
 
 
             <br>

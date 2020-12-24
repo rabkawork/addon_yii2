@@ -89,8 +89,8 @@ $this->title = 'Addon Yii2';
     <div class="container">
 
     <div class="row">
-      <div class="col-md-9">
-        <!-- <div class="container mt-5"> -->
+      <div class="col-md-6">
+        <div class="container mt-5">
           <div class="carousel-container position-relative row">
                 
               <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -108,21 +108,57 @@ $this->title = 'Addon Yii2';
 
               <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <div class="row mx-0">
+                
 
-                      <?php foreach($data['images'] as $key => $val): ?>
-                      <div id="carousel-selector-<?php echo $key; ?>" class="thumb col-4 col-sm-2 px-1 py-2 selected" data-target="#myCarousel" data-slide-to="<?php echo $key; ?>">
-                        <img src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" class="img-fluid" alt="...">
-                      </div>
+                      <?php 
+                      $count = 0;
+                      foreach($data['images'] as $key => $val): ?>
+                        <?php 
+                          if($count == 0){
+                        ?>
+                          <div class="carousel-item active">
+                            <div class="row mx-0">
+                        <?php
+                          }
+                        ?>
+
+
+                              <div id="carousel-selector-<?php echo $key; ?>" class="thumb col-4 col-sm-2 px-1 py-2 selected" data-target="#myCarousel" data-slide-to="<?php echo $key; ?>">
+                                <img src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" class="img-fluid" alt="...">
+                              </div>
+
+
+                            <?php
+                               if($count == 5 || $key == count($data['images'])){
+                            ?>
+                          </div>
+                        </div>
+                        <?php
+                            $count = 0;
+                          } else {
+                        ?>
+
+                      <?php 
+                          $count++;
+                        }
+                      ?>
                       <?php endforeach; ?>
                       
-                    </div>
-                  </div>
                 </div>
+
+                <a class="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel-thumbs" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
     
               </div>  
           </div>    
+        </div>
+        </div> 
 
           <div class="text">
 
@@ -140,7 +176,7 @@ $this->title = 'Addon Yii2';
             <fieldset>
                <h3>Anda akan membeli slide Rp. <?php echo number_format($data['harga']); ?></h3>
             </fieldset>
-            <a href="<?php echo Url::to(['/Presentasi/beli/invoice','id' => $data['id']]); ?>" id="google-slides" class="rounded btn btn-primary btn-lg active" >
+            <a href="<?php echo Url::to(['/Presentasi/beli/paid','id' => $data['id']]); ?>" id="google-slides" class="rounded btn btn-primary btn-lg active" >
               <span class="flex-1 text-center pl-2">Beli</span>
             </a>
 

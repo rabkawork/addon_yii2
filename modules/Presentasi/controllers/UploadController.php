@@ -16,6 +16,7 @@ use yii\base\Widget;
 use yii\web\UploadedFile;
 
 
+use app\modules\Presentasi\models\Publish;
 use app\modules\Presentasi\models\UploadForm;
 use app\modules\Presentasi\models\UploadAudio;
 use app\modules\Presentasi\models\Menu;
@@ -33,6 +34,13 @@ class UploadController extends Controller
 
 	public function actionUpload()
 	{
+
+
+		if(Yii::$app->user->getIsGuest()){
+            return $this->redirect(['/site/login']);		
+    	}
+
+
     	$model = new UploadForm();
     	$menuData = Menu::find()->asArray()->all();
 
@@ -111,13 +119,13 @@ class UploadController extends Controller
 		    $post = Yii::$app->request->post();
 
 		    if ($model->file && $model->validate()) {   
-		    	$namaFile = $model->file->baseName . '.' . $model->file->extension;
+		    	$namaFile = time() . '.' . $model->file->extension;
 		        $model->file->saveAs('dummy/' . $namaFile);
 		        $BASE_PATH = \Yii::$app->basePath."/web/dummy/";
 
 		        $customer = Content::findOne($id);
 				$customer->file_audio = $namaFile;
-				$customer->save();
+				$customer->save(false);
 		    }
 		}
 
@@ -125,20 +133,43 @@ class UploadController extends Controller
     	$getDetail = Content::find()->where(['id' => $id])->asArray()->one();
         $getDetail['images'] = Images::find()->where(['content_id' => $getDetail['id']])->all();
 
-    	return $this->render('index', ['data' => $getDetail,'model' => $models]);
+    	return $this->render('index', ['data' => $getDetail,'model' => $model]);
 
 	}
 
 
 	public function actionPublish($id = '')
 	{
+		if(Yii::$app->user->getIsGuest()){
+            return $this->redirect(['/site/login']);		
+    	}
 
-    	$getDetail = Content::find()->where(['id' => $id])->asArray()->one();
-		$customer = Content::findOne($id);
-		$customer->is_published = 1;
-		$customer->save();
+    	$dropdownList = ['0' => 'Gratis', '1' => 'Berbayar'];
 
-		return $this->redirect(['/Presentasi/default/index','id' => $getDetail['menu_id']]);   
+    	$model = new Publish();
+
+    	if (Yii::$app->request->isPost) {
+
+
+    		$getDetail = Content::find()->where(['id' => $id])->asArray()->one();
+        	$getDetail['images'] = Images::find()->where(['content_id' => $getDetail['id']])->all();
+
+
+			$model->load(\Yii::$app->request->post());		    
+		    if ($model->validate()) {   
+		  		$content = Content::findOne($id);
+				$content->status = $model->status;
+				$content->harga = $model->harga;
+				$content->is_published = 1;
+				$content->save(false);
+
+				return $this->redirect(['/Presentasi/default/index','id' => $getDetail['menu_id']]);   
+
+		    }
+		}
+
+    	return $this->render('publish', ['model' => $model,'dropdownList' => $dropdownList]);
+
 	}
 
 

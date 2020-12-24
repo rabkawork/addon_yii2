@@ -34,7 +34,9 @@ class DefaultController extends Controller
     public function actionIndex($id = '')
     {
 
-            $query = Content::find()->where(['menu_id' => $id]);
+            $query = Content::find()
+            ->where(['menu_id' => $id])
+            ->andWhere(['is_published' => 1]);
             $countQuery = clone $query;
             $pages = new Pagination(['totalCount' => $countQuery->count()]);
             $models = $query->offset($pages->offset)->limit($pages->limit)->asArray()->all();
@@ -55,8 +57,10 @@ class DefaultController extends Controller
         $getDetail['images'] = Images::find()->where(['content_id' => $getDetail['id']])->all();
 
         $query = Content::find()
-        ->andWhere(['not in','id', '('.$id.')'])
-        ->andWhere(['menu_id' => $getDetail['menu_id']]);
+        ->where(['<>','id', $id])
+        ->andWhere(['menu_id' => $getDetail['menu_id']])
+        ->andWhere(['is_published' => 1]);
+        
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $models = $query->offset($pages->offset)->limit($pages->limit)->asArray()->all();

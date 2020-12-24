@@ -180,6 +180,19 @@ $this->title = 'Addon Yii2';
                 <div class="d-flex justify-content-between align-items-center">
                 <?php echo $model['description']; ?>
                 </div>
+
+
+                    <?php 
+                    if($model['status'] == 1){
+                ?>
+                        <a class="btn btn-large btn-primary" href="<?php echo Url::to(['/Presentasi/beli/index','id' => $model['id']]); ?>">Beli Rp. <?php echo number_format($model['harga']); ?> </a>
+                <?php 
+                    }
+                    else{
+                ?>
+                        <a class="btn btn-large btn-success" href="<?= Yii::$app->request->baseUrl .'/dummy/'.$model['file_ppt']; ?>">Gratis Download </a>
+                <?php 
+                    }
             </div>
         </div>     
     </div>

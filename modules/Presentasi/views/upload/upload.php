@@ -2,7 +2,6 @@
 use kartik\file\FileInput;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-use kartik\file\FileInput;
 
 ?>
     <section class="content">
@@ -26,10 +25,7 @@ use kartik\file\FileInput;
                 <?php
                 echo $form->field($model, 'menu_id')->dropDownList(
                 $dropdownList
-                ); ?>
-                    echo $form->field($model, 'menu_id')->dropDownList(
-                    $dropdownList
-                    ); 
+                ); 
                 ?>
 
 

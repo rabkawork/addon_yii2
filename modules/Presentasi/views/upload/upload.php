@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
                 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
 
-
+		<div class="col-md-8">
                 <?php
 
             echo $form->field($model, 'file')->widget(FileInput::classname(), [
@@ -21,17 +21,21 @@ use yii\widgets\ActiveForm;
                             
 
             ?>
+		</div> 
+
+		<div class="col-md-8">
 
                 <?php
                 echo $form->field($model, 'menu_id')->dropDownList(
                 $dropdownList
                 ); 
                 ?>
+		</div>
 
-
-
+		 <div class="col-md-8">
                 <button class="btn btn-success">Uploads</button>
                 </div>
+		</div>
                 </div>
           </div>
 

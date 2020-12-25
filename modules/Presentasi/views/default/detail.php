@@ -89,7 +89,6 @@ $this->title = 'Addon Yii2';
     <div class="container">
 
     <div class="row">
-      <div class="col-md-6">
         <div class="container mt-5">
           <div class="carousel-container position-relative row">
                 
@@ -147,26 +146,22 @@ $this->title = 'Addon Yii2';
                 </div>
 
                 <a class="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carousel-thumbs" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-    
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-thumbs" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+          
               </div>  
           </div>    
         </div>
-          <div class="text">
-
-              <h2><?php echo $data['title']; ?></h2>
-              <p>
-                  <?php echo $data['description']; ?>
-              </p>
-          </div>
-        <!-- </div>  -->
+         
+        </div> 
       </div> 
+
+
                     
      <!--  <div class="col-md-6">
             <button id="google-slides" class="rounded btn btn-primary btn-lg active" >
@@ -175,10 +170,14 @@ $this->title = 'Addon Yii2';
       </div> -->
     </div>
 
+<div class="text">
+          <h2><?php echo $data['title']; ?></h2>
+          <p>
+              <?php echo $data['description']; ?>
+          </p>
+      </div>  
 <br />
-<br />
-<br />
-<br />
+
 
 <div class="row">
   <div class="col-md-4" >
@@ -199,7 +198,7 @@ $this->title = 'Addon Yii2';
                 <div class="swiper-wrapper">
                     <?php foreach($model['images'] as $val): ?>
                         <div class="swiper-slide"> 
-                            <a href="<?php echo  Url::to(['site/detail', 'id' => $model['id']]); ?>">
+                            <a href="<?php echo  Url::to(['/Presentasi/default/detail', 'id' => $model['id']]); ?>">
                                 <img class="card-img-top rounded" src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name']; ?>">
                             </a>
                         </div>

@@ -53,6 +53,7 @@ class HelloController extends Controller
                 $content->status = $randGratisAtauBayar;
                 $content->harga = $randGratisAtauBayar == 0 ? 0 : 10000;
                 $content->file_ppt = 'contoh.pptx';
+                $content->file_audio = '';
                 $content->is_published = 1;
                 $content->save();
                 $contentId = $content->id;

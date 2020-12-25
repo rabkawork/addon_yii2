@@ -88,90 +88,88 @@ $this->title = 'Addon Yii2';
 <div class="album py-5 bg-light">
     <div class="container">
 
-    <div class="row">
-      <div class="col-md-6">
-        <div class="container mt-5">
-          <div class="carousel-container position-relative row">
-                
-              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
+      <div class="row">
+          <div class="container mt-5">
+            <div class="carousel-container position-relative row">
+                  
+                <div id="myCarousel" class="carousel slide col-md-12" data-ride="carousel">
+                  <div class="carousel-inner">
 
-                  <?php foreach($data['images'] as $key => $val): ?>
-                  <div class="carousel-item <?= $key == 0 ? 'active' : '' ?>" data-slide-number="<?php echo $key; ?>">
-                    <img src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" class="d-block w-100" alt="" data-remote="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" 
-                    data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                    <?php foreach($data['images'] as $key => $val): ?>
+                    <div class="carousel-item <?= $key == 0 ? 'active' : '' ?>" data-slide-number="<?php echo $key; ?>">
+                      <img src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" class="d-block w-100" alt="" data-remote="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" 
+                      data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                    </div>
+                    <?php endforeach; ?>
+                   
                   </div>
-                  <?php endforeach; ?>
-                 
-                </div>
-              </div> 
+                </div> 
 
-              <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                
+                <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                  
 
-                      <?php 
-                      $count = 0;
-                      foreach($data['images'] as $key => $val): ?>
                         <?php 
-                          if($count == 0){
-                        ?>
-                          <div class="carousel-item active">
-                            <div class="row mx-0">
-                        <?php
+                        $count = 0;
+                        foreach($data['images'] as $key => $val): ?>
+                          <?php 
+                            if($count == 0){
+                          ?>
+                            <div class="carousel-item active">
+                              <div class="row mx-0">
+                          <?php
+                            }
+                          ?>
+
+
+                                <div id="carousel-selector-<?php echo $key; ?>" class="thumb col-4 col-sm-2 px-1 py-2 selected" data-target="#myCarousel" data-slide-to="<?php echo $key; ?>">
+                                  <img src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" class="img-fluid" alt="...">
+                                </div>
+
+
+                              <?php
+                                 if($count == 5 || $key == count($data['images'])){
+                              ?>
+                            </div>
+                          </div>
+                          <?php
+                              $count = 0;
+                            } else {
+                          ?>
+
+                        <?php 
+                            $count++;
                           }
                         ?>
+                        <?php endforeach; ?>
+                        
+                  </div>
 
+                  <a class="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-thumbs" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+      
+                </div>  
+            </div>    
+          </div>
 
-                              <div id="carousel-selector-<?php echo $key; ?>" class="thumb col-4 col-sm-2 px-1 py-2 selected" data-target="#myCarousel" data-slide-to="<?php echo $key; ?>">
-                                <img src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" class="img-fluid" alt="...">
-                              </div>
+         
+      </div> 
 
-
-                            <?php
-                               if($count == 5 || $key == count($data['images'])){
-                            ?>
-                          </div>
-                        </div>
-                        <?php
-                            $count = 0;
-                          } else {
-                        ?>
-
-                      <?php 
-                          $count++;
-                        }
-                      ?>
-                      <?php endforeach; ?>
-                      
-                </div>
-
-                <a class="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carousel-thumbs" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-    
-              </div>  
-          </div>    
-        </div>
-        </div> 
-
-          <div class="text">
-
+       <div class="col-md-12">
               <h2><?php echo $data['title']; ?></h2>
               <p>
                   <?php echo $data['description']; ?>
               </p>
-          </div>
-        <!-- </div>  -->
-      </div> 
+       </div>
                       
       <div class="col-md-6">
-            <hr>
+            <!-- <hr> -->
 
             <fieldset>
                <h3>Anda akan membeli slide Rp. <?php echo number_format($data['harga']); ?></h3>
@@ -180,12 +178,16 @@ $this->title = 'Addon Yii2';
               <span class="flex-1 text-center pl-2">Beli</span>
             </a>
 
-            <hr>
+            <!-- <hr> -->
             
       </div>
     </div>
 
+    </div>
+
+
+
   </div>
-  </div>
+</div>
 
  

@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
         ); ?>
 
 
-        <?= $form->field($model, 'harga')->textInput() ?>
+        <?= $form->field($model, 'harga')->textInput(array("value" => 0)) ?>
 
         <button class="btn btn-primary">Publish</button>
         </div>

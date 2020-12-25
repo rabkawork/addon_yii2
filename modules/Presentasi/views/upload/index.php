@@ -90,148 +90,136 @@ $this->title = 'Addon Yii2';
 
 <div class="album py-5 bg-light">
     <div class="container">
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Info</strong> Upload data has been success.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-    <div class="row">
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Info</strong> Upload data has been success.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
 
+      <div class="row">
+          <div class="col-sm-12">
+            <div class="">
+              <div class="">
+                  
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
 
-      <div class="col-md-8">
-        <div class="container mt-5">
-          <div class="carousel-container position-relative row">
-                
-              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-
-                  <?php foreach($data['images'] as $key => $val): ?>
-                  <div class="carousel-item <?= $key == 0 ? 'active' : '' ?>" data-slide-number="<?php echo $key; ?>">
-                    <img src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" class="d-block w-100" alt="" data-remote="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" 
-                    data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                    <?php foreach($data['images'] as $key => $val): ?>
+                    <div class="carousel-item <?= $key == 0 ? 'active' : '' ?>" data-slide-number="<?php echo $key; ?>">
+                      <img src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" class="d-block w-100" alt="" data-remote="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" 
+                      data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                    </div>
+                    <?php endforeach; ?>
+                   
                   </div>
-                  <?php endforeach; ?>
-                 
-                </div>
-              </div> 
+                </div> 
 
-              <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                
+                <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                  
 
-                      <?php 
-                      $count = 0;
-                      foreach($data['images'] as $key => $val): ?>
                         <?php 
-                          if($count == 0){
-                        ?>
-                          <div class="carousel-item active">
-                            <div class="row mx-0">
-                        <?php
-                          }
-                        ?>
+                        $count = 0;
+                        foreach($data['images'] as $key => $val): ?>
+                          <?php 
+                            if($count == 0){
+                          ?>
+                            <div class="carousel-item active">
+                              <div class="row mx-0">
+                          <?php
+                            }
+                          ?>
 
 
-                              <div id="carousel-selector-<?php echo $key; ?>" class="thumb col-4 col-sm-2 px-1 py-2 selected" data-target="#myCarousel" data-slide-to="<?php echo $key; ?>">
-                                <img src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" class="img-fluid" alt="...">
-                              </div>
+                                <div id="carousel-selector-<?php echo $key; ?>" class="thumb col-4 col-sm-2 px-1 py-2 selected" data-target="#myCarousel" data-slide-to="<?php echo $key; ?>">
+                                  <img src="<?= Yii::$app->request->baseUrl .'/dummy/'.$val['name'] ?>" class="img-fluid" alt="...">
+                                </div>
 
 
-                            <?php
-                               if($count == 5 || $key == count($data['images'])){
-                            ?>
+                              <?php
+                                 if($count == 5 || $key == count($data['images'])){
+                              ?>
+                            </div>
                           </div>
-                        </div>
-                        <?php
-                            $count = 0;
-                          } else {
+                          <?php
+                                $count = 0;
+                              } else {
+                                $count++;
+                              }
                         ?>
+                        <?php endforeach; ?>
+                        
+                  </div>
 
-                      <?php 
-                          $count++;
-                        }
-                      ?>
-                      <?php endforeach; ?>
-                      
-                </div>
+                    <a class="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-thumbs" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                </div>  
 
-            <a class="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carousel-thumbs" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-    
-              </div>  
-          </div>    
-        </div>
-          <div class="text">
+              </div>    
+            </div>
+          </div>
 
+          <div class="col-md-12">
               <h2><?php echo $data['title']; ?></h2>
               <p>
                   <?php echo $data['description']; ?>
               </p>
           </div>
-        <!-- </div>  -->
-      </div> 
-                      
 
-        <div class="col-md-4">
-
-            <br>
-            <br>
-            <a href="<?php echo Url::to(['/Presentasi/upload/publish','id' => $data['id']]); ?>"  class="rounded btn btn-primary btn-lg active" >
+          <div class="col-sm-6">
+            <br />
+            <br />
+            <a href="<?php echo Url::to(['/Presentasi/upload/publish','id' => $data['id']]); ?>"  class="rounded btn btn-primary" >
               <span class="flex-1 text-center pl-2">Publish</span>
             </a>
 
-
+            <button onclick="play()" type="button" class="rounded btn btn-success">Play </button>
+            <button onclick="pause()" type="button" class="rounded btn btn-danger">Pause</button>
+            <br />
+            <br />
 
             <audio controls id="music">
-            <source src="<?= Yii::$app->request->baseUrl .'/dummy/'.$data['file_audio']; ?>" type="audio/mpeg">
-            Your browser does not support the audio element.
+                <source src="<?= Yii::$app->request->baseUrl .'/dummy/'.$data['file_audio']; ?>" type="audio/mpeg">
+                Your browser does not support the audio element.
             </audio>
 
-            <p>Click the buttons to play or pause the music.</p>
-
-            <button onclick="play()" type="button">Play </button>
-            <button onclick="pause()" type="button">Pause</button>
 
             <script>
-            var myMusic= document.getElementById("music");
-            function play() {
-            myMusic.play();
-            }
+                var myMusic= document.getElementById("music");
+                function play() {
+                myMusic.play();
+                }
 
-            function pause() {
-            myMusic.pause();
-            }
+                function pause() {
+                myMusic.pause();
+                }
             </script>
 
 
             <br>
             <br>
-            <br>
+              <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
-            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+              <?= $form->field($model, 'file')->fileInput() ?>
 
-            <?= $form->field($model, 'file')->fileInput() ?>
+              <button class="btn btn-success">Upload Audio</button>
+              <?php ActiveForm::end() ?>
+          </div>
 
-            <button class="btn btn-success">Upload Audio</button>
-            <?php ActiveForm::end() ?>
-
-
-          
-
-        </div>
-            
-
-            
       </div>
+    
 
   </div>
   </div>
 
+
+  </div>
+  </div>
  

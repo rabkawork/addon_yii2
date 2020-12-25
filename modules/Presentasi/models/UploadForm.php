@@ -12,9 +12,19 @@ class UploadForm extends Model
     /**
      * @var UploadedFile file attribute
      */
+    public $title;
+    public $description;
     public $menu_id;
-
     public $file;
+
+
+    public function attributeLabels()
+    {
+        return [
+            'menu_id' => 'Pilih Menu',
+        ];
+    }
+
 
     /**
      * @return array the validation rules.
@@ -22,8 +32,8 @@ class UploadForm extends Model
     public function rules()
     {
         return [
-            [
-                ['file'], 'file', 'extensions' => 'pptx,ppt', 'skipOnEmpty' => false],
+            // [
+            //     ['file'], 'file', 'extensions' => 'pptx'],
         ];
     }
 }

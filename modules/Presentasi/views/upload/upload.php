@@ -1,42 +1,44 @@
 <?php
 use kartik\file\FileInput;
-use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 ?>
-    <section class="content">
-          <div class="container-fluid">
-            <!-- SELECT2 EXAMPLE -->
-            <div class="card card-default">
-              <div class="card-header">
-                <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
-
-
-		<div class="col-md-8">
-                <?php
-
-            echo $form->field($model, 'file')->widget(FileInput::classname(), [
-                'options' => ['accept' => 'image/*'],
-            ]); 
-                            
-
-            ?>
-		</div> 
-
-		<div class="col-md-8">
-
+<div class="card">
+  <div class="card-body">
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+            <div class="form-group">
                 <?php
                 echo $form->field($model, 'menu_id')->dropDownList(
                 $dropdownList
                 ); 
                 ?>
-		</div>
+            </div>
 
-		 <div class="col-md-8">
-                <button class="btn btn-success">Uploads</button>
-                </div>
-		</div>
-                </div>
-          </div>
+            <div class="form-group">
+                <?= $form->field($model, 'title')->textInput(['rows' => '6']) ?>
+            </div>
+            <div class="form-group">
+                <?= $form->field($model, 'description')->textarea(['rows' => '6']) ?>
+            </div>
 
+
+
+            <div class="form-group">
+                    
+                <?php
+
+                            echo $form->field($model, 'file')->widget(FileInput::classname(), [
+                                'options' => ['accept' => 'image/*'],
+                            ]); 
+                ?>
+
+            </div>
+
+
+           <div class="form-group">
+                <button class="btn btn-success">Upload</button>
+                
+            </div>
 <?php ActiveForm::end() ?>
+    </div>
+</div>

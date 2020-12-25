@@ -63,8 +63,8 @@ class UploadController extends Controller
 
 
 		    	$content = new Content();
-		        $content->title = "";
-                $content->description = "";
+		        $content->title = $post['UploadForm']['title'];
+                $content->description = $post['UploadForm']['description'];
 	            $content->menu_id = $post['UploadForm']['menu_id'];
 	            $content->default_images = 0;
                 $content->status = 0;
